@@ -42,25 +42,39 @@ export default function Home() {
       alert("It didn't go through.")
     }}
   }
-  const handleMassAdd = (descs) => {
+  const handleMassAdd = (titles, descs) => {
     if ((descs == '')) {
       setwarn("Description is empty")
     } else {
     const linesList = lines(descs)
     var newList = []
     var newAdded = 0;
+    var loopAdded = 0;
+    const checkTitle = obj => obj.title === titles + "-" + (loopAdded);
     for (let i = 0; i < linesList.length; i++) {
-      newAdded = added+(i+1)
-      var titles=customID + "-" + (newAdded);
+      
+      
+      if (titles == '') {
+        newAdded = added+(i+1)
+        var titless=customID + "-" + (newAdded);
+      } else {
+        loopAdded++;
+        if (data.some(checkTitle) == true) {
+          setwarn("There's a copy with this same title.")
+        break}
+        var titless=titles + "-" + (loopAdded);
+      }
         
-      newList = [...newList, {"title":titles, "desc":linesList[i]}]
+      newList = [...newList, {"title":titless, "desc":linesList[i]}]
       
     }
-    setAdded(newAdded+1)
+    if (titles == '') {
+      setAdded(newAdded+1)
+    }
     setData([...data, ...newList])
     localStorage.setItem("copies", JSON.stringify([...JSON.parse(localStorage.getItem("copies")), ...newList]))
     setTitle("");
-      setDesc("");
+    setDesc("");
     }
   }
   const handleAdd = (titles, descs) => {
@@ -213,7 +227,7 @@ export default function Home() {
       <h1 style={{fontWeight:"bold", color:newShade(theme, -100)}}>Description:</h1>
       <textarea name="desc" placeholder="Enter copy!" style={{width:"95%"}} rows="10"  value={desc} onChange={(e) => setDesc(e.target.value)} className="input1"></textarea>
       <button style={{background:newShade(theme, -40), color:newShade(theme, -100), padding:"2px", marginRight:"4px"}} onClick={() => handleAdd(title, desc)}>+ ADD</button>
-      <button style={{background:newShade(theme, -40), color:newShade(theme, -100), padding:"2px"}} onClick={() => handleMassAdd(desc)}>+ Mass ADD</button>
+      <button style={{background:newShade(theme, -40), color:newShade(theme, -100), padding:"2px"}} onClick={() => handleMassAdd(title, desc)}>+ Mass ADD</button>
       <div style={{marginTop:"3px"}}>
       <button style={{background:newShade(theme, -40), color:newShade(theme, -100), padding:"2px", marginRight:"4px"}} onClick={() => handleEdit(idS,desc)}>+ Edit</button>
       <input placeholder="Enter id!" type="text" name="title" value={idS} onChange={(e) => setidS(e.target.value)} className="input1"/>
