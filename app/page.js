@@ -225,6 +225,7 @@ export default function Home() {
       <hr></hr>
       <button style={{background:newShade(theme, -40), marginRight:"5px"}} onClick={()=>{exportData();}}>Export</button>
       <button style={{background:newShade(theme, -40)}} onClick={()=>{importData();}}>Import</button>
+      <a style={{display:"block", width:"20%", marginTop:"20px", background:newShade(theme, -40)}} href="https://github.com/noliuniverse/copyapp">SOURCE CODE.</a>
 
       </div>}
       <div style={{position:"fixed", background:"white", zIndex:'1', width:"100%", padding:"20px", top:"0px"}}>
