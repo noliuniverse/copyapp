@@ -2,32 +2,82 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-rgb: rgb(255, 255, 255);
+  --bs-body-bg: rgb(255, 255, 255);
+
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+main {
+  background-color: rgb(255, 255, 255);
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: rgb(255, 255, 255);
+  --bs-body-bg: rgb(255, 255, 255);
+  font-size: 100%;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 10px;
+}
+.settings {
+  transition: 0.2s;
+  overflow-y: scroll;
+}
+.copy_button {
+  color: black;
+  background-color: rgb(221, 221, 221);
+  cursor: pointer;
+  position: relative;
+  text-overflow: ellipsis;
+  overflow: hidden; 
+  height: 147px; 
+  white-space: nowrap;
+  font-size: 120%;
+  display: block;
+  transition: all 0.2s
+}
+.copy_button:hover {
+  color: black;
+  background-color: rgb(173, 255, 185);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+
+.copy_button:after {
+  content: "";
+  background: #000000;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px!important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.4s
+}
+
+.copy_button:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+.div1 {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.header_class {
+  font-weight: bold;
+  font-size: 100%;
 }
