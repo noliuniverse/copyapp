@@ -240,7 +240,7 @@ export default function Home() {
       <p style={{marginTop:"10px"}}>Search:</p>
       {(loading == false) && <input id='search' value={search} onChange={(e) => setSearch(e.target.value)} type="search" style={{ padding: "2px", borderRadius:"5px",color:"white", background:"black"}}></input>}
       <div className="grid">
-      {data && searchFilter(data).map((item, index) => {return <div key={index} className="copy_button" onMouseOver={(e) => e.target.style.background=theme} onMouseOut={(e) => e.target.style.background="rgb(221, 221, 221)"} onClick={() => {handleCopy(item['desc']);}}><p style={{position:"absolute"}}>i: {index}</p><h1 style={{fontWeight:"bold"}}>{item['title'].toString()}</h1><p className="buttonP" style={{textWrap:"wrap", overflow:"hidden", textOverflow:"ellipsis"}}>{item['desc'].toString()}</p></div>})}
+      {data && searchFilter(data).map((item, index) => {return <div key={index} className="copy_button" onMouseOver={(e) => e.target.style.background="#" + theme} onMouseOut={(e) => e.target.style.background="rgb(221, 221, 221)"} onClick={() => {handleCopy(item['desc']);}}><p style={{position:"absolute"}}>i: {index}</p><h1 style={{fontWeight:"bold"}}>{item['title'].toString()}</h1><p className="buttonP" style={{textWrap:"wrap", overflow:"hidden", textOverflow:"ellipsis"}}>{item['desc'].toString()}</p></div>})}
       </div>
       </div>
     </main>

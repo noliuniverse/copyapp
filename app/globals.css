@@ -46,7 +46,6 @@ body {
 }
 .copy_button:hover {
   color: black;
-  background-color: rgb(173, 255, 185);
   cursor: pointer;
   position: relative;
   overflow: hidden;
